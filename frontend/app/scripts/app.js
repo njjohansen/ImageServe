@@ -20,7 +20,14 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .otherwise({
-        redirectTo: '/'
+      .when('/aarbog/2014', {
+        templateUrl: 'views/aarsbog_2014.html'//,
+        //controller: 'AddOrderController'
+      })
+      .when('/aarbog/2014/:eventName', { //:eventName*
+        templateUrl: 'views/eventview.html'
       });
+      /*.otherwise({
+        redirectTo: '/'
+      });*/
   });

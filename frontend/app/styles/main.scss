@@ -8,12 +8,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     color: #000;
     padding: 0.2em 0;
 }
-/* Space out content a bit */
-
-body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 
 .header, .marketing, .footer {
@@ -62,9 +56,51 @@ body {
     }
 }
 //----------------------------------------------------------------
+html, body{
+    height: 100%;
+}
+
+body{
+    background-color: #A9D4EF; //#5888a6
+}
+
+.row{
+    padding: 0;
+    margin: 0;
+}
+.container{
+    padding: 0;
+    &.main{
+        padding: 0 15px;
+        min-height: 100%;
+        background: rgb(255, 255, 255);
+        background: rgba(255, 255, 255, 0.5);
+    }
+}
+
+.box-container{
+    background-color: #fff;
+    border-radius: 6px;
+}
 
 .header{
     border: none;
+    padding: 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    h3{
+        padding-top: 19px;
+        padding-left: 20px;
+        border-bottom: 1px solid #e5e5e5;
+        font-weight: 600;
+    }
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    p{
+        font-size: 12px;
+    }
 }
 
 .nc-navigation {
@@ -72,9 +108,10 @@ body {
     width: 25%;
     display: inline-block;
 }
-.jumbotron {
+.viewarea  {
     width: 73%;
     display: inline-block;
+    padding: 20px;
     h1 {
         position: absolute;
     }
@@ -90,10 +127,18 @@ body {
 img {
     max-width: 100%;
 }
+article img.splash{
+    margin: 0 auto;
+    display: block;
+}
 .nav {
     li {
-        background-color: #e5e5e5;
-        margin-bottom: 10px;
+        margin-left: 0 !important;
+        margin-bottom: 0;
+        border-bottom: 1px solid #e7e7e7;
+        li:last-child{
+            border: none;
+        }
         a{
             color: black;
             font-size: 16px;
@@ -101,13 +146,17 @@ img {
     }
 }
 
+
+
 .btnBack{
     width: 100%;
     height: 42px;
     padding: 10px 15px;
-    background-color: #e5e5e5;
+    background-color: #E7E7E7;
+    //border: 1px solid rgb(205, 205, 205);
     color: black;
     font-size: 16px;
+    margin-top: 10px;
 
     .glyphicon-arrow-left{
         margin-right: 10px;
@@ -118,4 +167,10 @@ img {
     img{
         margin-bottom: 10px;
     }
+}
+
+.breadcrumb{
+    background-color: transparent;
+    margin-top: 0;
+    margin-bottom: 0;
 }

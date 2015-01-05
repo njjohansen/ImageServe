@@ -22,53 +22,40 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
-        <div class="header">
-            <h3 class="text-muted">NC Billedviser</h3>
+    <div class="container main">
+        <div class="header box-container">
+            <div>
+                <h3>NC Billedviser</h3>
+            </div>
         </div>
+        <!--<div class="row" ng-controller="viewAreaCtrl">
+            <ol class="breadcrumb">
+                <li><a href="#/">Forside</a></li>
+                <li><a href="#">Library</a></li>
+                <li class="active">Data</li>
+            </ol>
+        </div> -->
 
-        <div class="row">
+        <div class="row ">
 
-            <div class="jumbotron viewarea" ng-controller="viewAreaCtrl">
+            <div class="viewarea box-container" ng-controller="viewAreaCtrl">
                 <div ng-hide="hideSplash">
                     <p class="lead">
-                        <img src="images/screen.jpg">
+                        <!-- <img src="images/screen.jpg"> -->
                     </p>
                 </div>
-               
-                <div ng-repeat="image in images">
-                    <img src="{{url}}/{{image}}">
+
+                <div ng-view>
+                    
                 </div>
+
             </div>
 
-            <div class=" nc-navigation" ng-controller="eventNavCtrl">
-
-                <ul class="nav nav-pills pull-right domains" ng-show="currentStep === 'domains'">
-                    <li ng-repeat="domain in domains">
-                        <a class="btn" ng-click="domainClick(domain)">{{domain}}</a>
-                    </li>
-                </ul>
-
-                <ul class="nav nav-pills pull-right years" ng-show="currentStep === 'years'">
-                    <li ng-repeat="year in years">
-                        <a class="btn" ng-click="yearClick(year)">{{year}}</a>
-                    </li>
-                </ul>
-
-                <ul class="nav nav-pills pull-right events" ng-show="currentStep === 'events'">
-                    <li ng-repeat="event in events" ng-class="{active: selectedIndex === $index}">
-                        <a class="btn" ng-click="eventClick(event, $index)">{{event.metadata.title}}</a>
-                    </li>
-                </ul>
-
-                <a ng-click="backClick()" class="btn btnBack" ng-show="showBackBtn()"><span class="glyphicon glyphicon-arrow-left"></span>Tilbage</a>
-                
-            </div>
+            <navigation></navigation>
         </div>
-
-        <div class="footer">
-
-        </div>
+        <!--<footer>
+            <p>After Dark Årbog ~ Tak til alle formænd, arrangører og deltagere</p>  
+        </footer>-->
     </div>
 
     <!-- build:js(.) scripts/oldieshim.js -->
@@ -109,6 +96,9 @@
     <script src="scripts/eventDataService.js"></script>
     <script src="scripts/controllers/eventNavigationController.js"></script>
     <script src="scripts/controllers/viewAreaController.js"></script>
+
+    <script src="scripts/directives/Navigation/navigation.html"></script>
+    <script src="scripts/directives/Navigation/navigation.js"></script>
     <!-- endbuild -->
 </body>
 

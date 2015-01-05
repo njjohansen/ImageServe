@@ -1,0 +1,23 @@
+<div class=" nc-navigation" ng-controller="eventNavCtrl">
+    <div class="box-container">
+         <ul class="nav nav-pills pull-right domains" ng-show="currentStep === 'domains'">
+            <li ng-repeat="domain in domains">
+                <a class="btn" ng-href ="#/{{domain}}" ng-click="domainClick(domain)">{{domain}}</a>
+            </li>
+        </ul>
+
+        <ul class="nav nav-pills pull-right years" ng-show="currentStep === 'years'">
+            <li ng-repeat="year in years">
+                <a class="btn" ng-href ="#/{{chosenDomain}}/{{year}}" ng-click="yearClick(year)">{{year}}</a>
+            </li>
+        </ul>
+
+        <ul class="nav nav-pills pull-right events" ng-show="currentStep === 'events'">
+            <li ng-repeat="event in events" ng-class="{active: selectedIndex === $index}">
+                <a class="btn" ng-href ="#/{{chosenDomain}}/{{chosenYear}}/{{event.eventId}}" ng-click="eventClick(event, $index)">{{event.eventId}}</a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <a ng-click="backClick()" class="btn btnBack" ng-show="showBackBtn()"><span class="glyphicon glyphicon-arrow-left"></span>Tilbage</a>
+</div>

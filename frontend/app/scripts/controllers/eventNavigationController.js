@@ -8,7 +8,7 @@
  * Controller of the NCEventsApp
  */
 angular.module('NCEventsApp')
-    .controller('eventNavCtrl', function($scope, $http, $$eventDataService) {
+    .controller('eventNavCtrl', function($scope, $rootScope, $location, $http, $$eventDataService) {
 
         $scope.currentStep = 'domains';
 
@@ -20,6 +20,10 @@ angular.module('NCEventsApp')
             }
             return false;
         };
+
+        //-------- set nav based on $location.path -----
+
+            //TODO: change nav based on direct url change in browser adress field. Only on browser forward and backwards buttons (måske brug: $scope.$watch('$location.path()', function(locationPath)) 
 
         //-------- Clicks -------
 
@@ -46,6 +50,7 @@ angular.module('NCEventsApp')
         };
 
         $scope.backClick = function() {
+            //nav change
             $scope.currentStep = $scope.currentStep;
             $scope.selectedIndex = -1;
             if($scope.currentStep === 'events'){
@@ -54,6 +59,9 @@ angular.module('NCEventsApp')
             else if($scope.currentStep === 'years'){
                 $scope.currentStep = 'domains';
             }
+
+            //url back
+            window.history.back();
         };
 
         //--------- initialize menu ---------
