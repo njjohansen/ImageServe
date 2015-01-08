@@ -9,7 +9,7 @@ angular.module('NCEventsApp')
         return {
             restrict: 'AE', 
             replace: 'true',
-            templateUrl: 'scripts/directives/Navigation/navigation.html',
+            templateUrl: 'views/navigation.html',
             link: function($scope, element, attrs) {
 
             }
