@@ -33,6 +33,7 @@ angular.module('NCEventsApp')
 		this.getImages = function(domain, year, ncEvent){
 			$http.get(baseUrl + 'list/'+domain+'/'+year+'/'+ncEvent.eventId+'/image/').
 				success(function(obj) {
+					console.log(obj);
 					var data = {
 						images: obj.images,
 						eventData: obj.metadata,

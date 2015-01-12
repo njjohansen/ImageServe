@@ -10,7 +10,7 @@ var ImageManager = function(){
 	var SRCPREFIX = "images";
 
 	this.process = function(){
-		//console.log("Processing images..");
+		console.log("Processing images..");
 		
 		var paths = [];
 		paths.push(path.join(CACHEPREFIX));

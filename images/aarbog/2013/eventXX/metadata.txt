@@ -1,0 +1,31 @@
+{
+	"sortkey": 1,
+	"title": "Lorem ipsum",
+	"date": "2015-01-12",
+	"author": "Jonas Johansen",
+	"description": "
+<div>
+	<h1>Er du en en lorem ipsum?</h1>
+
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida sem quis lorem suscipit, eget cursus lorem dignissim. Sed placerat aliquam massa. Maecenas ultricies, ipsum vitae fermentum maximus, ex est sodales ex, eu pharetra nisl erat vel lacus. Nam est.
+	{{Chrysanthemum.jpg}}
+	<h2>Tid og sted</h2>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida sem quis lorem suscipit, eget cursus lorem dignissim. Sed placerat aliquam massa. Maecenas ultricies, ipsum vitae fermentum maximus, ex est sodales ex, eu pharetra nisl erat vel lacus. Nam est.
+	{{Koala.jpg}}
+	<h3>BadAss Hilsner</h3>
+	<h3>Mathias Holm Andersen og Lasse C. H. Thelander</h3>
+</div>
+
+<div>
+	<h1>Dette er et underarrangement</h1>
+
+	Dette arrangement findes i sin egen div, og skal således separeres ud i sin egen ramme.
+	{{Koala.jpg}}
+	<h2>Tid og sted</h2>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida sem quis lorem suscipit, eget cursus lorem dignissim. Sed placerat aliquam massa. Maecenas ultricies, ipsum vitae fermentum maximus, ex est sodales ex, eu pharetra nisl erat vel lacus. Nam est.
+	{{Chrysanthemum.jpg}}
+	<h3>BadAss Hilsner</h3>
+	<h3>Nogle andre fine arrangører</h3>
+</div>
+"
+}

@@ -22,6 +22,8 @@ angular.module('NCEventsApp')
     	 	$scope.imageUrlLarge = data.imageUrlLarge;
     	 	$scope.imageUrlThumb = data.imageUrlThumb;    	 	
     	 	$scope.images = data.images; 
+    	 	$scope.title = data.eventData.title; 
+            $scope.author = data.eventData.author; 
     	 	$scope.description = insertImages(data.eventData.description); 
 
     	 });
