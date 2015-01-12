@@ -2,10 +2,10 @@
 
 angular.module('NCEventsApp')
 	.service('$$eventDataService', function($rootScope, $http){
-
+		var baseUrl = 'http://afterdark.netcompany.com:1337/';
 		this.getDomains = function(){
 			//get domains
-		    var promise = $http.get('http://afterdark.netcompany.com:1337/list/domain/').
+		    var promise = $http.get(baseUrl+'list/domain/').
 				success(function(domains) {
 					return domains;
 				});
@@ -15,7 +15,7 @@ angular.module('NCEventsApp')
 
 		//get years for chosen domain
 		this.getYears = function(domain){
-			return $http.get('http://afterdark.netcompany.com:1337/list/'+domain+'/year').
+			return $http.get(baseUrl + 'list/'+domain+'/year/').
 				success(function(years) {
 					return years;
 				});
@@ -23,7 +23,7 @@ angular.module('NCEventsApp')
 
 		//get events for chosen domain/year
 		this.getEvents = function(domain, year){
-			return $http.get('http://afterdark.netcompany.com:1337/list/'+domain+'/'+year+'/event').
+			return $http.get(baseUrl+ 'list/'+domain+'/'+year+'/event/').
 				success(function(events) {
 					return events;
 				});
@@ -31,11 +31,13 @@ angular.module('NCEventsApp')
 
 		//get iamges for chosen domain/year/event
 		this.getImages = function(domain, year, ncEvent){
-			$http.get('http://afterdark.netcompany.com:1337/list/'+domain+'/'+year+'/'+ncEvent.eventId+'/image').
-				success(function(images) {
+			$http.get(baseUrl + 'list/'+domain+'/'+year+'/'+ncEvent.eventId+'/image/').
+				success(function(obj) {
 					var data = {
-						allImages: images,
-						url: 'http://afterdark.netcompany.com:1337/image/'+domain+'/'+year+'/'+ncEvent.eventId,
+						images: obj.images,
+						eventData: obj.metadata,
+						imageUrlLarge: baseUrl + 'image/'+domain+'/'+year+'/'+ncEvent.eventId,
+						imageUrlThumb: baseUrl + 'thumb/'+domain+'/'+year+'/'+ncEvent.eventId,
 					};
 					$rootScope.$emit('imagesReady', data);
 				});

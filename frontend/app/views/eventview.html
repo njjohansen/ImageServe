@@ -1,3 +1,6 @@
+
+<div ng-bind-html="description | rawHtml"></div>
+Klik på et af billederne for at forstørre: 
 <div ng-repeat="image in images">
-	<img src="{{url}}/{{image}}">
+	<img src="{{imageUrlThumb}}/{{image}}">
 </div>

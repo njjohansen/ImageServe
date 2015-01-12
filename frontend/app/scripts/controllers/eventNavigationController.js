@@ -68,4 +68,9 @@ angular.module('NCEventsApp')
         $$eventDataService.getDomains().then(function(domains) {
             $scope.domains = domains.data;
         });
-    });
+    })
+    .filter('rawHtml', ['$sce', function($sce){
+        return function(val) {
+            return $sce.trustAsHtml(val);
+        };
+    }]);

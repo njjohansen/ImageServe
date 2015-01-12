@@ -61,7 +61,7 @@ var ImageManager = function(){
 	var extractImages = function(p){
 		foreachImage(path.join(SRCPREFIX, p), function(imgPath, imgName){
 			var pN = path.join(p, imgName);
-			console.log('\t\tImage found: ' + imgName + "("+ imgPath+")");
+			//console.log('\t\tImage found: ' + imgName + "("+ imgPath+")");
 			copyImages(pN);
 		});
 	};
@@ -71,6 +71,7 @@ var ImageManager = function(){
 		var cachePathThumb = path.join(CACHEPREFIX, THUMBPREFIX, p);
 		fs.exists(cachePathThumb, function(thumbExists){			
 			if( !thumbExists ){
+				console.log('\t\tCreating thumb: ' + p + "("+ cachePathThumb+")");
 				// target thumb images does not exist	
 				//console.log(srcPath+"->"+cachePathThumb);			
 				gm(srcPath)
@@ -83,6 +84,7 @@ var ImageManager = function(){
 		var cachePathLarge = path.join(CACHEPREFIX, LARGEPREFIX, p);
 		fs.exists(cachePathLarge, function(largeExists){
 			if(!largeExists){
+				console.log('\t\tCreating image: ' + p + "("+ cachePathLarge+")");
 				// target large images does not exist
 				gm(srcPath)
 				.resize(1024,1024)
@@ -185,7 +187,11 @@ var ImageManager = function(){
 	};
 
 	var isImage = function(filename, stat){
-		return (stat.isFile() && filename.substr(-4).toLowerCase() === '.jpg' );		
+		return (stat.isFile() && 
+			(
+				filename.substr(-4).toLowerCase() === '.jpg' ||
+				filename.substr(-4).toLowerCase() === '.png'
+			) );		
 	};
 
 	var foreachImage = function(orgPath, callback){
@@ -206,12 +212,29 @@ var ImageManager = function(){
 		});
 	};
 
+	var escapeSpecialChars = function(jsonString) {
+	    return jsonString.replace(/\n/g, "")
+	        .replace(/\r/g, "")
+	        .replace(/\t/g, "")
+	        .replace(/\f/g, "");
+
+	};
+
 	var readJsonFromFile = function (filepath, callback) {
 		fs.exists(filepath, function(exist){
 			if( exist){
 		    	fs.readFile(filepath, 'utf8', function (err, data) {    		
 		            if (err) throw err;
-		            callback(JSON.parse(data));
+		            if( typeof data !== 'undefined')
+		            	try{
+		            		callback(JSON.parse(escapeSpecialChars(data)));	
+		            	}
+		            	catch(err){
+		            		console.log("Err. loading: " + filepath);
+		            		console.log("Invalid JSON: " + data);
+		            		console.log("Error text: " + err);
+		            	}
+		            	
 		            //Do your processing, MD5, send a satellite to the moon, etc.
 		            // fs.writeFile(savPath, data, function(err) {
 		            //     if (err) throw err;
@@ -234,7 +257,6 @@ var ImageManager = function(){
 	};
 
 	var enrichEvents = function(domainId, yearId, eventlist, callback){
-
 		var enriched = eventlist.map(function(curVal, index, array){ 
 			return {
 				'eventId': curVal,
@@ -250,6 +272,20 @@ var ImageManager = function(){
 					callback(enriched);
 			});
 		};
+	};
+
+	var enrichImages = function(domainId, yearId, eventId, images, callback){
+		var enriched = {
+			'eventId': eventId,
+			'domainId': domainId,
+			'yearId': yearId
+		};
+
+		enrichWithJson(enriched, function(){
+			enriched.images = images;
+			callback(enriched);
+		});
+
 	};
 
 	this.listDomains = function(callback){
@@ -281,13 +317,14 @@ var ImageManager = function(){
 
 	this.listYearEvents = function(domainId, yearId, callback){
 		getDirs(path.join(SRCPREFIX, domainId, yearId), function(events){
-			enrichEvents(domainId, yearId, events, callback);			
+			enrichEvents(domainId, yearId, events, callback);
 		});
 	};
 
 	this.listImages = function(domainId, yearId, eventId, callback){
 		getImages(path.join(SRCPREFIX, domainId, yearId, eventId), function(imgList){
-			callback(imgList);
+			enrichImages(domainId, yearId, eventId, imgList, callback);
+			//callback(imgList);
 		});
 	};	
 

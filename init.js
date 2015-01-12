@@ -13,7 +13,7 @@ var httpServer = new HttpServer(imageManager);
 
 // process image source library
 imageManager.process();
-setTimeout(imageManager.process, 60000);
+setInterval(imageManager.process, 60000);
 // start httpServer
 httpServer.listen();
 
