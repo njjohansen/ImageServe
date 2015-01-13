@@ -30,15 +30,16 @@ angular.module('NCEventsApp')
 		};
 
 		//get iamges for chosen domain/year/event
-		this.getImages = function(domain, year, ncEvent){
-			$http.get(baseUrl + 'list/'+domain+'/'+year+'/'+ncEvent.eventId+'/image/').
+		this.getImages = function(domain, year, eventId){
+			console.log('getImages ' + eventId);
+			$http.get(baseUrl + 'list/'+domain+'/'+year+'/'+eventId+'/image/').
 				success(function(obj) {
 					console.log(obj);
 					var data = {
 						images: obj.images,
 						eventData: obj.metadata,
-						imageUrlLarge: baseUrl + 'image/'+domain+'/'+year+'/'+ncEvent.eventId,
-						imageUrlThumb: baseUrl + 'thumb/'+domain+'/'+year+'/'+ncEvent.eventId,
+						imageUrlLarge: baseUrl + 'image/'+domain+'/'+year+'/'+eventId,
+						imageUrlThumb: baseUrl + 'thumb/'+domain+'/'+year+'/'+eventId,
 					};
 					$rootScope.$emit('imagesReady', data);
 				});
