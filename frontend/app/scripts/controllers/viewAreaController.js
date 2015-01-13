@@ -17,6 +17,8 @@ angular.module('NCEventsApp')
 
         $scope.eventName = eventID;
 
+        $scope.LogoName ='afterdark';
+
         $scope.images = null;
         $scope.description = '';
 
