@@ -3,6 +3,6 @@
 ... af <span ng-bind="author"></span>
 <div ng-bind-html="description | rawHtml"></div>
 Klik på et af billederne for at forstørre: 
-<div ng-repeat="image in images">
-	<img src="{{imageUrlThumb}}/{{image}}">
+<div>
+	<img ng-repeat="image in images" ng-src="{{imageUrlThumb}}/{{image}}"/>
 </div>

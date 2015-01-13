@@ -9,14 +9,20 @@
  */
 angular.module('NCEventsApp')
     .controller('viewAreaCtrl', function($scope, $rootScope) {
+        $scope.images = null;
+        $scope.description = '';
 
     	var insertImages = function(description){
-    		if(typeof description !== 'undefined')
-    			return description.replace(/{{[a-zæøå\ _\-0-9\.]*}}/gi, 
-    									function(match){ return "<img src='"+$scope.imageUrlLarge+"/"+match.substr(2, match.length-4)+"'/>"});
+    		if(typeof description !== 'undefined' ){
+    			return description
+                    .replace(/{{[a-zæøå\ _\-0-9\.]*}}/gi, 
+                        function(match){ return '<img src=\"'+$scope.imageUrlLarge+'/'+match.substr(2, match.length-4)+'\"/>';}
+                    );
+            }
     	};
 
     	$rootScope.$on('imagesReady', function(event, data) { 
+            console.log('Controller event: \'imagesReady\'')
     	 	$scope.hideSplash = true;
 
     	 	$scope.imageUrlLarge = data.imageUrlLarge;

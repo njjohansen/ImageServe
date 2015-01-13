@@ -17,60 +17,65 @@ var ImageManager = function(){
 		paths.push(path.join(CACHEPREFIX, THUMBPREFIX));
 		paths.push(path.join(CACHEPREFIX, LARGEPREFIX));
 		ensureDirs(paths, function(){
-			extractDomains("");
+			var workerInfo = {imagesProcessing: 0};
+			extractDomains("", workerInfo);
 		});
 		
 	};
 
-	var extractDomains = function (p) {
+	var extractDomains = function (p, workerInfo) {	
 		foreachDir(path.join(SRCPREFIX, p), function(dirPath, dirName){
 			var pN = path.join(p, dirName);
 			var paths = [];
 			paths.push(path.join(CACHEPREFIX, THUMBPREFIX, pN));
 			paths.push(path.join(CACHEPREFIX, LARGEPREFIX, pN));
 			ensureDirs(paths, function(){
-				extractYears(pN);
+				extractYears(pN, workerInfo);
 			});
 		});
 	};
 
-	var extractYears = function(p){
+	var extractYears = function(p, workerInfo){
 		foreachDir(path.join(SRCPREFIX, p), function(dirPath, dirName){
 			var pN = path.join(p, dirName);
 			var paths = [];
 			paths.push(path.join(CACHEPREFIX, THUMBPREFIX, pN));
 			paths.push(path.join(CACHEPREFIX, LARGEPREFIX, pN));
 			ensureDirs(paths, function(){
-				extractEvents(pN);
+				extractEvents(pN, workerInfo);
 			});
 		});
 	};
 
-	var extractEvents = function(p){
+	var extractEvents = function(p, workerInfo){
 		foreachDir(path.join(SRCPREFIX, p), function(dirPath, dirName){
 			var pN = path.join(p, dirName);
 			var paths = [];
 			paths.push(path.join(CACHEPREFIX, THUMBPREFIX, pN));
 			paths.push(path.join(CACHEPREFIX, LARGEPREFIX, pN));
 			ensureDirs(paths, function(){
-				extractImages(pN);
+				extractImages(pN, workerInfo);
 			});
 		});
 	};
 
-	var extractImages = function(p){
+	var extractImages = function(p, workerInfo){
+
 		foreachImage(path.join(SRCPREFIX, p), function(imgPath, imgName){
 			var pN = path.join(p, imgName);
 			//console.log('\t\tImage found: ' + imgName + "("+ imgPath+")");
-			copyImages(pN);
+			copyImages(pN, workerInfo);
 		});
 	};
 
-	var copyImages = function(p){
+	var MAXPROCESSING = 10;
+	var copyImages = function(p, workerInfo){
 		var srcPath = path.join(SRCPREFIX, p);
 		var cachePathThumb = path.join(CACHEPREFIX, THUMBPREFIX, p);
+	
 		fs.exists(cachePathThumb, function(thumbExists){			
-			if( !thumbExists ){
+			if( !thumbExists && workerInfo.imagesProcessing < MAXPROCESSING) {
+				workerInfo.imagesProcessing++;
 				console.log('\t\tCreating thumb: ' + p + "("+ cachePathThumb+")");
 				// target thumb images does not exist	
 				//console.log(srcPath+"->"+cachePathThumb);			
@@ -83,7 +88,8 @@ var ImageManager = function(){
 
 		var cachePathLarge = path.join(CACHEPREFIX, LARGEPREFIX, p);
 		fs.exists(cachePathLarge, function(largeExists){
-			if(!largeExists){
+			if( !largeExists && workerInfo.imagesProcessing < MAXPROCESSING){
+				workerInfo.imagesProcessing++;
 				console.log('\t\tCreating image: ' + p + "("+ cachePathLarge+")");
 				// target large images does not exist
 				gm(srcPath)
@@ -204,6 +210,7 @@ var ImageManager = function(){
 
 		fs.readdir(orgPath, function(err, files){
 			if( err) throw err;
+
 			for(var i = 0; i < files.length; i++){
 				var fName = files[i];
 				var fPath = path.join(orgPath, fName);
