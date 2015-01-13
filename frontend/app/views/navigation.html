@@ -13,7 +13,7 @@
         </ul>
 
         <ul class="nav nav-pills pull-right events" ng-show="currentStep === 'events'">
-            <li ng-repeat="event in events" ng-class="{active: selectedIndex === $index}">
+            <li ng-repeat="event in (events | orderBy:'metadata.sortkey')" ng-class="{active: selectedIndex === $index}">
                 <a class="btn" ng-href ="#/{{chosenDomain}}/{{chosenYear}}/{{event.eventId}}" ng-click="eventClick(event, $index)">{{event.eventId}}</a>
             </li>
         </ul>

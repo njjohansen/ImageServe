@@ -22,7 +22,7 @@ angular.module('NCEventsApp')
     	};
 
     	$rootScope.$on('imagesReady', function(event, data) { 
-            console.log('Controller event: \'imagesReady\'')
+            console.log('Controller event: \'imagesReady\'');
     	 	$scope.hideSplash = true;
 
     	 	$scope.imageUrlLarge = data.imageUrlLarge;
