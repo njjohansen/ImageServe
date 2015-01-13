@@ -1,0 +1,12 @@
+.main-section.afterdark{
+	.splash{
+		background-image: url("afterdark splash.jpg");
+	}
+	.content{
+		 .submenu{
+            ul li a:hover{
+	            color: $afterdark-red;
+	        }
+        }
+	}
+}

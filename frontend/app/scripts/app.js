@@ -10,31 +10,25 @@
  */
 angular
   .module('NCEventsApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+    'ngRoute'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/aarbog/2013', {
+      /*.when('/aarbog/2013', {
         templateUrl: 'views/aarsbog_2013.html'//,
         //controller: 'AddOrderController'
       })
       .when('/aarbog/2013/:eventName', { //:eventName*
         templateUrl: 'views/eventview.html'
+      })*/
+      .when('/', {
+        templateUrl: 'views/aarsbog_2014.html'
       })
-      .when('/aarbog/2014', {
-        templateUrl: 'views/aarsbog_2014.html'//,
-        //controller: 'AddOrderController'
+      .when('/:eventName', { //:eventName*
+        templateUrl: 'views/eventview.html',
+        controller:'viewAreaCtrl'
       })
-      .when('/aarbog/2014/:eventName', { //:eventName*
-        templateUrl: 'views/eventview.html'
-      });
-      /*.otherwise({
+      .otherwise({
         redirectTo: '/'
-      });*/
+      });
   });

@@ -8,7 +8,11 @@
  * Controller of the NCEventsApp
  */
 angular.module('NCEventsApp')
-    .controller('viewAreaCtrl', function($scope, $rootScope) {
+    .controller('viewAreaCtrl', function($scope, $rootScope, $$eventDataService) {
+        var chosenDomain = 'aarbog';
+        var chosenYear = '2014';
+        $$eventDataService.getImages(chosenDomain, chosenYear, event);
+
         $scope.images = null;
         $scope.description = '';
 
@@ -24,7 +28,7 @@ angular.module('NCEventsApp')
     	$rootScope.$on('imagesReady', function(event, data) { 
             console.log('Controller event: \'imagesReady\'');
     	 	$scope.hideSplash = true;
-
+            
     	 	$scope.imageUrlLarge = data.imageUrlLarge;
     	 	$scope.imageUrlThumb = data.imageUrlThumb;    	 	
     	 	$scope.images = data.images; 
