@@ -13,7 +13,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 body{
-    font-family: "Georgia", "serif";
+    font-family: 'Open Sans', sans-serif;
     position: relative;
     padding-bottom: 40px;
     color: $font-color;
@@ -32,15 +32,16 @@ body{
 header{
     width: 100%;
     height: $header-height;
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     z-index: 5;
     border-right: 8px solid $nc-blue;
     border-left: 8px solid $nc-blue;
     background-color: $bg-header-footer;
     .menu-container{
-        margin-top: 8px;
+        padding-top: 1.5rem;
         text-align: center;
+
         ul.menu{
             padding: 0;
             margin: 0;
@@ -48,7 +49,7 @@ header{
             li{
                 display: inline-block;
                 list-style-type: none;
-                margin-right: 20px;
+                margin-right: 25px;
                 &:last-child{
                     margin-right: 0;
                 }
@@ -60,11 +61,12 @@ header{
                     }
                 }
                 a{
-                    font-size: 14px;
-                    font-weight: 600;
-                    color: $font-color-light;
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: black;/*$font-color-light;*/
                     text-decoration: none;
-                    text-transform: capitalize;
+                    /*text-transform: capitalize;*/
+                    text-transform: uppercase;
                     &:hover{
                         color: $nc-blue;
                     }
@@ -72,18 +74,20 @@ header{
             }
         }
         .nc-logo{
+            width: 50px;
+            height: auto;
             margin: 0 20px;
         }
     }
 }
 
 .main-section{
-    margin-top: $header-height;
+    /*margin-top: $header-height;*/
     margin-bottom: $footer-height;
     .splash{
         position: relative;
         height: 450px;
-        width: 100%;
+        /*width: 100%;*/
         margin-bottom: 130px;
         background-image: url("stuff.jpg");
         background-color: #dededb;
@@ -93,6 +97,7 @@ header{
             h1{
                 text-align: center;
                 font-size: 60px;
+                font-weight: 300;
                 color: $font-color;
             }
             p.subtext{
@@ -110,12 +115,16 @@ header{
         }
 
         &.klubside{
+            h1{
+                margin-top: 0;
+                margin-bottom: 0;
+            }
             height: 300px;
             margin-bottom: 70px;
             .text-container{
                 top: 100px;
                 h1{
-                    font-size: 48px;
+                    text-transform: capitalize;
                 }
             }
             .logo-container.small{
@@ -126,8 +135,13 @@ header{
     .content{
         h2{
             text-align: center;
-            font-size: 22px;
-            font-weight: 600;
+            margin-top: 70px;
+            font-size: 42px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        .divider{
+            border-top: 1px solid #d6d6d6;
         }
         .submenu{
             text-align: center;
