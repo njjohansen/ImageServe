@@ -170,6 +170,19 @@ header{
                 width: 100%;
                 margin: 1em 0;
             }
+
+            .thumbsnails{
+                a{
+                    color: #337cb7;
+                    text-decoration: none;
+                    display: inline-block;
+                    margin-right: 8px;
+                    margin-bottom: 2px;
+                    width: 60px;
+                    height: 60px;
+                    overflow: hidden;
+                }
+            }
         }
         .submenu{
             text-align: center;
