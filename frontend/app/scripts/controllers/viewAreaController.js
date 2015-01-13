@@ -17,7 +17,22 @@ angular.module('NCEventsApp')
 
         $scope.eventName = eventID;
 
-        $scope.LogoName ='afterdark';
+        
+        if(eventID === 'cocktails' || eventID === 'Dark' || eventID === 'Royale' || eventID === 'Wonderland'){
+            $scope.LogoName ='afterdark';
+        }else if(eventID === 'badass'){
+            $scope.LogoName ='badass';
+        }else if(eventID === 'festudvalget'){
+            $scope.LogoName ='festudvalget';
+        }else if(eventID === 'heidi'){
+            $scope.LogoName ='iso9000';
+        }else if(eventID === 'executers'){
+            $scope.LogoName ='executers';
+        }else if(eventID === 'sprint'){
+            $scope.LogoName ='sprint';
+        }else{
+            $scope.LogoName ='afterdark';
+        }
 
         $scope.images = null;
         $scope.description = '';
