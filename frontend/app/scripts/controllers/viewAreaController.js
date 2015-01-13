@@ -8,9 +8,10 @@
  * Controller of the NCEventsApp
  */
 angular.module('NCEventsApp')
-    .controller('viewAreaCtrl', function($scope, $rootScope, $$eventDataService) {
+    .controller('viewAreaCtrl', function($scope, $rootScope, $location, $$eventDataService) {
         var chosenDomain = 'aarbog';
         var chosenYear = '2014';
+        $location
         $$eventDataService.getImages(chosenDomain, chosenYear, event);
 
         $scope.images = null;

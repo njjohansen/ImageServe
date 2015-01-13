@@ -10,7 +10,13 @@
  */
 angular
   .module('NCEventsApp', [
-    'ngRoute'
+    'ngAnimate',
+    'ngCookies',
+    'ngMessages',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
   ])
   .config(function ($routeProvider) {
     $routeProvider
