@@ -136,6 +136,7 @@ header{
         }
     }
     .content{
+
         .article-title{
             text-align: center;
             margin-top: 70px;
@@ -147,6 +148,11 @@ header{
             border-top: 1px solid #d6d6d6;
         }
         .article{
+            /* Almindelige tekst styles */
+            -webkit-font-smoothing: antialiased;
+            line-height: 26px;
+            font-size: 14px;
+
             .author{
                 font-weight: 700;
                 text-transform: uppercase;
@@ -159,12 +165,7 @@ header{
             h1, h2{
                 font-size: 20px;
                 font-weight: 700;
-            }
-
-            p{
-                -webkit-font-smoothing: antialiased;
-                line-height: 26px;
-                font-size: 14px;
+                line-height: 1;
             }
 
             .main-text img{
