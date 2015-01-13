@@ -90,6 +90,7 @@ header{
         /*width: 100%;*/
         margin-bottom: 130px;
         background-image: url("stuff.jpg");
+        background-size: cover;
         background-color: #dededb;
         .text-container{
             position: relative;
@@ -119,10 +120,10 @@ header{
                 margin-top: 0;
                 margin-bottom: 0;
             }
-            height: 300px;
+            height: 350px;
             margin-bottom: 70px;
             .text-container{
-                top: 100px;
+                top: 108px;
                 h1{
                     /*text-transform: capitalize;*/
                     text-transform: Uppercase;
@@ -135,7 +136,7 @@ header{
         }
     }
     .content{
-        h2{
+        .article-title{
             text-align: center;
             margin-top: 70px;
             font-size: 42px;
@@ -153,6 +154,17 @@ header{
                 letter-spacing: 1px;
                 text-align: center;
                 margin: 6px 0 35px 0;
+            }
+
+            h1, h2{
+                font-size: 20px;
+                font-weight: 700;
+            }
+
+            p{
+                -webkit-font-smoothing: antialiased;
+                line-height: 26px;
+                font-size: 14px;
             }
 
             img{
@@ -199,5 +211,16 @@ footer{
     p{
         margin-top: 32px;
         font-size: 12px;
+    }
+}
+
+
+
+/* arrangement specifikke tilpasninger*/
+.main-section.executers{
+    .splash{
+        h1{
+            color: white;
+        }
     }
 }
