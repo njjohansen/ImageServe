@@ -2,17 +2,16 @@
 
 
 /**
- * Used in staed of $('document').ready. Images arrive async and ng-repeat must be done.  
+ * Used instead of $('document').ready. Images arrive async and ng-repeat must be done.  
  */
 angular.module('NCEventsApp')
     .directive('image', function ($timeout) {
     return {
         restrict: 'AE',
         link: function (scope) {
-        	console.log(scope);
-            if (scope.$last === true) {
+            if (scope.$last === true) { //last repeat
                 $timeout(function () {
-                	$(".fancybox").fancybox();
+                    $('.fancybox').fancybox();
                 });
             }
         }
