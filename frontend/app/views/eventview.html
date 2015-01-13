@@ -19,8 +19,10 @@
 			</div>
 			<div ng-bind-html="description | rawHtml"></div>
             <h3>Alle billeder</h3>
-            <div class="thumbsnails">
-               <img ng-repeat="image in images" ng-src="{{imageUrlThumb}}/{{image}}"/>
+            <div class="thumbsnails" > 
+            	<a class="fancybox" rel="group" href="{{imageUrlLarge}}/{{image}}" ng-repeat="image in images" image> <!-- directive-->
+            		<img ng-src="{{imageUrlThumb}}/{{image}}"/>
+            	</a>
             </div>
         </div>
      </div>
