@@ -338,10 +338,10 @@ module.exports = function (grunt) {
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
           dest: '<%= yeoman.dist %>'
         }, {
-          expand: true,
+          expand: false, 
           cwd: '.',
-          src: 'bower_components/fancybox/source/*',
-          dest: '<%= yeoman.dist %>'
+          src: 'bower_components/fancybox/source/*.gif',
+          dest: '<%= yeoman.dist %>/styles'
         }]
       },
       styles: {
