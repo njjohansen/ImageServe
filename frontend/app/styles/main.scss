@@ -356,8 +356,16 @@ footer{
         background-image: url("../images/wonderland-splash.jpg");
     }
 }
+.main-section.aarbog{
+    .splash{
+        background-image: url("../images/aarbog-splash.jpg");
+        h1{
+            color: white;
+        }
+    }
+}
 
-/* TODO: responsive stuff*/
+/* responsive stuff*/
 @media all and (max-width: 699px) {
     .main-section{
         .splash.klubside{
@@ -372,7 +380,7 @@ footer{
     }
 }
 
-//responsive header
+/*responsive header*/
 @media all and (max-width: 1180px) {
     header{
         height: inherit;
