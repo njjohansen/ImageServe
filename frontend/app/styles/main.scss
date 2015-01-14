@@ -31,8 +31,6 @@ body{
 header{
     width: 100%;
     height: $header-height;
-    /*position: fixed;*/
-    top: 0;
     z-index: 5;
     border-right: 8px solid $nc-blue;
     border-left: 8px solid $nc-blue;
@@ -120,6 +118,7 @@ header{
         }
 
         &.klubside{
+
             h1{
                 margin-top: 0;
                 margin-bottom: 0;
@@ -170,6 +169,10 @@ header{
                 font-size: 20px;
                 font-weight: 700;
                 line-height: 1;
+            }
+            h3{
+                font-size: 13px;
+                font-weight: 700;
             }
 
             .main-text img{
@@ -237,22 +240,30 @@ footer{
 /* arrangement specifikke tilpasninger*/
 .main-section.executers{
     .splash{
-        background-image: url("stuff.jpg");
+        background-image: url("../images/executers-splash.jpg");
         h1{
             color: white;
+        }
+    }
+}
+.main-section.badass{
+    .splash{
+        background-image: url("../images/badass-splash.jpg");
+        h1{
+            /*color: white;*/
         }
     }
 }
 
 /* TODO: responsive stuff*/
 @media all and (max-width: 699px) {
-    .main-section.executers{
-        .splash{
-            height: 250px;
+    .main-section{
+        .splash.klubside{
+            height: 200px;
             .text-container{
-                top: 60px;
+                top: 45px;
                 h1{
-                    font-size: 30px;
+                    font-size: 40px;
                 }
             }
         }
