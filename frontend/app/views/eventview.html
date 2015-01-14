@@ -18,8 +18,8 @@
 				<span class="author-name" ng-bind="author"></span>
 			</div>
 			<div class="main-text" ng-bind-html="description | rawHtml"></div>
-            <h3>Alle billeder</h3>
-            <div class="thumbsnails" > 
+            <h2>Alle billeder</h2>
+            <div class="thumbsnails"> 
             	<a class="fancybox" rel="group" href="{{imageUrlLarge}}/{{image}}" ng-repeat="image in images" image> <!-- directive-->
             		<img ng-src="{{imageUrlThumb}}/{{image}}"/>
             	</a>
