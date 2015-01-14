@@ -39,7 +39,6 @@ angular.module('NCEventsApp')
             $scope.chosenYear = year;
             $scope.currentStep = 'events';
             $$eventDataService.getEvents($scope.chosenDomain, $scope.chosenYear).then(function(events) {
-                console.log(events);
                 $scope.events = events.data;
             });
         };

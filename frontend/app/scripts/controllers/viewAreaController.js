@@ -47,8 +47,6 @@ angular.module('NCEventsApp')
     	};
 
     	$rootScope.$on('imagesReady', function(event, data) { 
-            console.log('Controller event: \'imagesReady\'');
-
     	 	$scope.imageUrlLarge = data.imageUrlLarge;
     	 	$scope.imageUrlThumb = data.imageUrlThumb;    	 	
     	 	$scope.images = data.images; 
