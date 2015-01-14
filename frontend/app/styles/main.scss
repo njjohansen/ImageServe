@@ -249,8 +249,13 @@ footer{
 .main-section.badass{
     .splash{
         background-image: url("../images/badass-splash.jpg");
+    }
+}
+.main-section.bodega{
+    .splash{
+        background-image: url("../images/bodega-splash2.jpg");
         h1{
-            /*color: white;*/
+            color: white;
         }
     }
 }
