@@ -36,9 +36,9 @@ header{
     border-left: 8px solid $nc-blue;
     background-color: $bg-header-footer;
 
-    -webkit-box-shadow: 0px 0px 8px 2px #D3D3D3;
-       -moz-box-shadow: 0px 0px 8px 2px #D3D3D3;
-            box-shadow: 0px 0px 8px 2px #D3D3D3;
+    -webkit-box-shadow: 0px 0px 8px 2px rgba(56, 56, 56, 0.22);
+       -moz-box-shadow: 0px 0px 8px 2px rgba(56, 56, 56, 0.22);
+            box-shadow: 0px 0px 8px 2px rgba(56, 56, 56, 0.22);
     position: relative;
 
     .menu-container{
