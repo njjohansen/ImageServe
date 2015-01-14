@@ -199,7 +199,7 @@ header{
                     background: rgba(255, 255, 255, 0.75);
                     /* min-width: 80px; */
                     height: 30px;
-                    width: 20px;
+                    width: 25px;
                     text-transform: uppercase;
                 }
 
@@ -268,10 +268,16 @@ footer{
             color: white;
         }
     }
+    .content .article .dropcap{
+        color:#1caf4e; /*green*/
+    }
 }
 .main-section.badass{
     .splash{
         background-image: url("../images/badass-splash.jpg");
+    }
+    .content .article .dropcap{
+        color:#1caf4e; /*green*/
     }
 }
 .main-section.bodega{
@@ -305,6 +311,9 @@ footer{
             color: white;
         }
     }
+    .content .article .dropcap{
+        color:#ec008c;
+    }
 }
 .main-section.royale{
     .splash{
@@ -318,6 +327,9 @@ footer{
     .splash{
         background-image: url("../images/heidi-splash.jpg");
     }
+    .content .article .dropcap{
+        color:#00aeef;
+    }
 }
 .main-section.sprint{
     .splash{
@@ -325,6 +337,9 @@ footer{
         h1{
             color: white;
         }
+    }
+    .content .article .dropcap{
+        color:#1caf4e; /*green*/
     }
 }
 .main-section.steelass{
