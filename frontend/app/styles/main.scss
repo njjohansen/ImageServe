@@ -185,6 +185,7 @@ header{
                 margin: 1em 0;
             }
 
+            /* Tilføj dropcap til span rundt om første bogstav i en paragraph, så ser det najs ud. */
             .dropcap{
                     font-size: 50px;
                     font-weight: 700;
@@ -348,6 +349,11 @@ footer{
         h1{
             color: white;
         }
+    }
+}
+.main-section.wonderland{
+    .splash{
+        background-image: url("../images/wonderland-splash.jpg");
     }
 }
 
