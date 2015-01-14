@@ -259,6 +259,14 @@ footer{
         }
     }
 }
+.main-section.cocktails{
+    .splash{
+        background-image: url("../images/cocktails-splash.jpg");
+        h1{
+            color: white;
+        }
+    }
+}
 
 /* TODO: responsive stuff*/
 @media all and (max-width: 699px) {
