@@ -25,7 +25,7 @@ body{
 }
 
 .container{
-    width: $container;
+    max-width: $container;
 }
 
 header{
@@ -88,7 +88,6 @@ header{
         height: 450px;
         /*width: 100%;*/
         margin-bottom: 130px;
-        background-image: url("stuff.jpg");
         background-size: cover;
         background-color: #dededb;
         .text-container{
@@ -135,14 +134,6 @@ header{
         }
     }
     .content{
-
-        .article-title{
-            text-align: center;
-            margin-top: 70px;
-            font-size: 42px;
-            font-weight: 300;
-            margin-bottom: 40px;
-        }
         .divider{
             border-top: 1px solid #d6d6d6;
         }
@@ -151,6 +142,14 @@ header{
             -webkit-font-smoothing: antialiased;
             line-height: 26px;
             font-size: 14px;
+
+            .article-title{
+                text-align: center;
+                margin-top: 70px;
+                font-size: 42px;
+                font-weight: 300;
+                margin-bottom: 40px;
+            }
 
             .author{
                 font-weight: 700;
@@ -229,12 +228,27 @@ footer{
 }
 
 
-
 /* arrangement specifikke tilpasninger*/
 .main-section.executers{
     .splash{
+        background-image: url("stuff.jpg");
         h1{
             color: white;
+        }
+    }
+}
+
+/* TODO: responsive stuff*/
+@media all and (max-width: 699px) {
+    .main-section.executers{
+        .splash{
+            height: 250px;
+            .text-container{
+                top: 60px;
+                h1{
+                    font-size: 30px;
+                }
+            }
         }
     }
 }
