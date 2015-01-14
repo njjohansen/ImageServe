@@ -11,6 +11,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     padding: 0.2em 0;
 }
 
+html {
+    overflow-y: scroll; //prevent centering 'jump' when navigation from page ewith scroll to page without scroll. 
+}
+
 body{
     font-family: 'Open Sans', sans-serif;
     position: relative;
