@@ -274,3 +274,23 @@ footer{
         }
     }
 }
+
+//responsive header
+@media all and (max-width: 1180px) {
+    header{
+        height: inherit;
+        .menu-container{
+            padding-top: 10px !important;
+            .menu{
+                display: block !important;
+            }
+            .menu-left, .menu-right{
+                padding-bottom: 10px !important;
+            }
+            .nc-logo{
+                display: none !important;
+            }
+        }
+    }
+    
+}
