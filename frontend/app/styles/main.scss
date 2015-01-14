@@ -184,6 +184,24 @@ header{
                 margin: 1em 0;
             }
 
+            .dropcap{
+                    font-size: 50px;
+                    font-weight: 700;
+                    float: left;
+                    text-align: center;
+                    margin: 0;
+                    position: relative;
+                    top: 12px;
+                    margin-right: 15px;
+                    color: #ee2824;
+                    /* border: 2px solid black; */
+                    background: rgba(255, 255, 255, 0.75);
+                    /* min-width: 80px; */
+                    height: 30px;
+                    width: 20px;
+                    text-transform: uppercase;
+                }
+
             .thumbsnails{
                 a{
                     color: #337cb7;
@@ -290,6 +308,27 @@ footer{
 .main-section.royale{
     .splash{
         background-image: url("../images/royale-splash2.jpg");
+        h1{
+            color: white;
+        }
+    }
+}
+.main-section.heidi{
+    .splash{
+        background-image: url("../images/heidi-splash.jpg");
+    }
+}
+.main-section.sprint{
+    .splash{
+        background-image: url("../images/sprint-splash.jpg");
+        h1{
+            color: white;
+        }
+    }
+}
+.main-section.steelass{
+    .splash{
+        background-image: url("../images/steelass-splash.jpg");
         h1{
             color: white;
         }
