@@ -180,8 +180,10 @@ header{
             }
 
             .main-text img{
-                width: 100%;
-                margin: 1em 0;
+                width: 50%;
+                margin: 0 auto;
+                margin-bottom: 5px;
+                display: block;
             }
 
             /* Tilføj dropcap til span rundt om første bogstav i en paragraph, så ser det najs ud. */
