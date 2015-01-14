@@ -271,6 +271,22 @@ footer{
         }
     }
 }
+.main-section.dark{
+    .splash{
+        background-image: url("../images/dark-splash.jpg");
+        h1{
+            color: white;
+        }
+    }
+}
+.main-section.festudvalget{
+    .splash{
+        background-image: url("../images/festudvalget-splash.jpg");
+        h1{
+            color: white;
+        }
+    }
+}
 
 /* TODO: responsive stuff*/
 @media all and (max-width: 699px) {
