@@ -29,8 +29,9 @@
 
             <ul class="menu menu-left">
                 <li><a ng-click="homeClick()" ng-href="#/">Forord</a></li>
-                <li ng-repeat="event in leftMenu"><a href="" ng-href="#/{{event.eventId}}" ng-click="eventClick(event)">{{event.eventId}}</a></li>
+                <li ng-repeat="event in leftMenu"><a href="" ng-href="#/{{event.eventId}}" ng-class="[event.metadata.type]">{{event.eventId}}</a></li>
             <!--
+            ng-click="eventClick(event)"
                 <li class="selected"><a href="">Forord</a></li>
                 <li><a href="">After Dark</a></li>
                 <li><a href="">Aros</a></li>
@@ -40,7 +41,7 @@
             </ul>
             <img src="images/nc-logo.png" class="nc-logo" alt="nc-logo">
             <ul class="menu menu-right">
-                <li ng-repeat="event in rightMenu"><a href="" ng-href="#/{{event.eventId}}">{{event.eventId}}</a></li>
+                <li ng-repeat="event in rightMenu"><a href="" ng-href="#/{{event.eventId}}" ng-class="[event.metadata.type]">{{event.eventId}}</a></li>
                 <!--<li><a href="">Quiet Please</a></li>
                 <li><a href="">Sprint</a></li>
                 <li><a href="">ISO 9000</a></li>

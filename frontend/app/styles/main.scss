@@ -71,6 +71,18 @@ header{
                     font-size: 13px;
                     font-weight: 700;
                     color: black;/*$font-color-light;*/
+                    &.sport {
+                        color: #1A1;
+                    }
+                    &.event {
+                        color: #B06;
+                    }
+                    &.commitee {
+                        color: #11A;
+                    }
+                    &.club {
+                        color: #C30;
+                    }
                     text-decoration: none;
                     /*text-transform: capitalize;*/
                     text-transform: uppercase;

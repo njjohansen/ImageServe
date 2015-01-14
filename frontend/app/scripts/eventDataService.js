@@ -28,6 +28,7 @@ angular.module('NCEventsApp')
 		this.getEvents = function(domain, year){
 			return $http.get(baseUrl+ 'list/'+domain+'/'+year+'/event/').
 				success(function(events) {
+					console.log(events);
 					return events;
 				});
 		};
