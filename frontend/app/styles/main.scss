@@ -287,6 +287,14 @@ footer{
         }
     }
 }
+.main-section.royale{
+    .splash{
+        background-image: url("../images/royale-splash2.jpg");
+        h1{
+            color: white;
+        }
+    }
+}
 
 /* TODO: responsive stuff*/
 @media all and (max-width: 699px) {
