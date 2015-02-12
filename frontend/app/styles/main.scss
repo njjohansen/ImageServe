@@ -694,3 +694,19 @@ SUPER GRIMT, quick and dirty, har bare kopiered styles fra fancybox herind, grun
         background-size: 24px 24px; /*The size of the normal image, half the size of the hi-res image*/
     }
 }
+
+div.news {
+    padding: 20px;
+    border: 2px solid #a1a1a1;
+    background: #ddd;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    >p:first-child {
+        font-weight: bold;
+        text-align: center;
+    }
+    >p:last-child{
+        font-style: italic;
+        text-align: center;
+    }
+}
