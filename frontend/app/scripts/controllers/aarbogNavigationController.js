@@ -9,9 +9,10 @@
  */
 angular.module('NCEventsApp')
     .controller('aarbogNavigationCtrl', function($scope, $rootScope, $location, $http, $$eventDataService) {
-
         // initialize menu with events
-        $$eventDataService.getEvents($rootScope.chosenDomain, $rootScope.chosenYear).then(function(events) {
+        var year = $scope.urlYear;
+        
+        $$eventDataService.getEvents($rootScope.chosenDomain, year).then(function(events) {
 
             events.data = events.data.sort(function(a, b){
                 if( typeof a.metadata === 'undefined' || typeof b.metadata === 'undefined' ){

@@ -3,7 +3,6 @@
 angular.module('NCEventsApp')
 	.service('$$eventDataService', function($rootScope, $http){
 		$rootScope.chosenDomain = 'aarbog'; //TODO: un-hardcode
-        $rootScope.chosenYear = '2014';
 
 		var baseUrl = 'http://afterdark.netcompany.com:1337/';
 		this.getDomains = function(){
@@ -28,7 +27,7 @@ angular.module('NCEventsApp')
 		this.getEvents = function(domain, year){
 			return $http.get(baseUrl+ 'list/'+domain+'/'+year+'/event/').
 				success(function(events) {
-					console.log(events);
+					//console.log(events);
 					return events;
 				});
 		};

@@ -9,11 +9,10 @@
  */
 angular.module('NCEventsApp')
     .controller('viewAreaCtrl', function($scope, $rootScope, $location, $$eventDataService) {
-        var path = $location.path();
-        var pathParts = (path).split('/');
-        var eventID = pathParts[pathParts.length-1];
+        var eventID = $scope.urlEvent; // set by main aarbogCtrl
+        var year = $scope.urlYear;
 
-        $$eventDataService.getImages($rootScope.chosenDomain, $rootScope.chosenYear, eventID); //fetch images from server
+        $$eventDataService.getImages($rootScope.chosenDomain, year, eventID); //fetch images from server
 
         $scope.eventName = eventID;
 

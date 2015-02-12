@@ -1,0 +1,21 @@
+<header>
+    <div class="menu-container" ng-controller="aarbogNavigationCtrl">
+        <ul class="menu menu-left">
+            <li><a ng-click="homeClick()" ng-href="#/aarbog/{{urlYear}}">Forord</a></li>
+            <li ng-repeat="event in leftMenu"><a href="" ng-href="#/aarbog/{{urlYear}}/{{event.eventId}}" ng-class="[event.metadata.type]">{{event.eventId}}</a></li>
+        </ul>
+        <a href="#/"><img src="images/nc-logo.png" class="nc-logo" alt="nc-logo"></a>
+        <ul class="menu menu-right">
+            <li ng-repeat="event in rightMenu"><a href="" ng-href="#/aarbog/{{urlYear}}/{{event.eventId}}" ng-class="[event.metadata.type]">{{event.eventId}}</a></li>
+        </ul>
+    </div>
+</header>
+<section>
+	<div ng-include="subView">
+
+	</div>
+</section>
+<footer>
+    <p class="container">After Dark Årbog {{urlYear}} ~ Tak til alle formænd, arrangører og deltagere</p>
+</footer>    
+

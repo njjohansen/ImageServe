@@ -1,5 +1,5 @@
 'use strict';
-
+/*global $:false */
 
 /**
  * Used instead of $('document').ready. Images arrive async and ng-repeat must be done.  

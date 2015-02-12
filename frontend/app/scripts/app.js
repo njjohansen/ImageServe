@@ -28,11 +28,16 @@ angular
         templateUrl: 'views/eventview.html'
       })*/
       .when('/', {
-        templateUrl: 'views/aarsbog_2014.html'
+        templateUrl: 'views/frontpage.html',
+        controller: 'frontpageCtrl',     
+      })  
+      .when('/aarbog/:year/', {
+        templateUrl: 'views/aarbog.html',
+        controller: 'aarbogCtrl'
       })
-      .when('/:eventName', { //:eventName*
-        templateUrl: 'views/eventview.html',
-        controller:'viewAreaCtrl'
+      .when('/aarbog/:year/:eventName', { //:eventName*
+        templateUrl: 'views/aarbog.html',
+        controller: 'aarbogCtrl'
       })
       .otherwise({
         redirectTo: '/'
