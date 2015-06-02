@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('NCEventsApp')
-	.service('$$eventDataService', function($rootScope, $http){
+	.service('$$eventDataService', function($rootScope, $http) {
 		$rootScope.chosenDomain = 'aarbog'; //TODO: un-hardcode
 
-		var baseUrl = 'http://afterdark.netcompany.com:1337/';
-		this.getDomains = function(){
+		var baseUrl = 'http://localhost:1337';
+		this.getDomains = function() {
 			//get domains
-		    var promise = $http.get(baseUrl+'list/domain/').
+		    var promise = $http.get(baseUrl+'/').
 				success(function(domains) {
 					return domains;
 				});
@@ -16,16 +16,16 @@ angular.module('NCEventsApp')
 		};
 
 		//get years for chosen domain
-		this.getYears = function(domain){
-			return $http.get(baseUrl + 'list/'+domain+'/year/').
+		this.getYears = function(domain) {
+			return $http.get(baseUrl + '/'+domain+'/years/').
 				success(function(years) {
 					return years;
 				});
 		};
 
 		//get events for chosen domain/year
-		this.getEvents = function(domain, year){
-			return $http.get(baseUrl+ 'list/'+domain+'/'+year+'/event/').
+		this.getEvents = function(domain, year) {
+			return $http.get(baseUrl + '/'+domain+'/years/'+year+'/events').
 				success(function(events) {
 					//console.log(events);
 					return events;
@@ -33,14 +33,15 @@ angular.module('NCEventsApp')
 		};
 
 		//get images for chosen domain/year/event
-		this.getImages = function(domain, year, eventId){
-			$http.get(baseUrl + 'list/'+domain+'/'+year+'/'+eventId+'/image/').
+		this.getImages = function(domain, year, eventId) {
+			var imagesBase = baseUrl + '/'+domain+'/years/'+year+'/events/'+eventId+'/images';
+			$http.get(imagesBase).
 				success(function(obj) {
 					var data = {
 						images: obj.images,
 						eventData: obj.metadata,
-						imageUrlLarge: baseUrl + 'image/'+domain+'/'+year+'/'+eventId,
-						imageUrlThumb: baseUrl + 'thumb/'+domain+'/'+year+'/'+eventId,
+						imageUrlLarge: imagesBase+'/large',
+						imageUrlThumb: imagesBase+'/thumb',
 					};
 					$rootScope.$emit('imagesReady', data);
 				});
