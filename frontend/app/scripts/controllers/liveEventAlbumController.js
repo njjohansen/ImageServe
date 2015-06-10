@@ -22,7 +22,7 @@ angular.module('NCEventsApp')
                     src: data.imageUrlLarge + '/' + image.imageFile,
                     safeSrc: data.imageUrlLarge + '/' + image.imageFile,
                     thumb: data.imageUrlThumb + '/' + image.imageFile,
-                    caption: 'Lorem Ipsum Dolor',
+                    caption: (image.metadata != null)? image.metadata.title: image.imageFile,
                     size: screenSize(1024, 679),
                     type: 'image'
                 });
