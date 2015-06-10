@@ -73,7 +73,7 @@ var HttpServer = function(imageManager){
 			var metadata = {
 				author: '',
 				email: '',
-				subject: ''
+				title: ''
 			};
 
 			form.on("field", function(name, value) {
