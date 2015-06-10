@@ -129,6 +129,23 @@ var ImageManager = function(){
 		});
 	};
 
+	// from http://lmws.net/making-directory-along-with-missing-parents-in-node-js
+	fs.mkdirParent = function(dirPath, callback) {
+  //Call the standard fs.mkdir
+  fs.mkdir(dirPath, function(error) {
+    //When it fail in this way, do the custom steps
+    if (error && error.errno === 34) {
+      //Create all the parents recursively
+      fs.mkdirParent(path.dirname(dirPath), callback);
+      //And then the directory
+      fs.mkdirParent(dirPath, callback);
+    }
+    //Manually run the callback since we used our own callback to do all these
+    callback && callback(error);
+  });
+};
+
+
 	var getDirs = function(orgPath, callback){
 		var list = [];
 		fs.readdir(orgPath, function(err, files){
@@ -222,7 +239,7 @@ var ImageManager = function(){
 			(
 				filename.substr(-4).toLowerCase() === '.jpg' ||
 				filename.substr(-4).toLowerCase() === '.png'
-			) );		
+			) );
 	};
 
 	var isJson = function(filename, stat){
@@ -405,6 +422,25 @@ var ImageManager = function(){
 		});
 	};	
 
+	this.saveImage = function(domainId, yearId, eventId, metadata, stream) {
+		var date = new Date();
+		metadata['time'] = date.toISOString();
+
+		var imagepath = path.join(__dirname, SRCPREFIX, domainId, yearId, eventId);
+
+		var metadataFile = path.join(imagepath, date.toISOString().replace(/:/g, '-')+'.json');
+		var imageFile = path.join(imagepath, date.toISOString().replace(/:/g, '-')+path.extname(stream.filename));
+
+		fs.mkdirParent(imagepath, function() {
+			fs.writeFile(metadataFile, JSON.stringify(metadata), function(err) {
+				if (err) {
+					return console.log(err);
+				}
+
+				stream.pipe(fs.createWriteStream(imageFile));
+			});
+		});
+	};
 }
 
 module.exports = new ImageManager();

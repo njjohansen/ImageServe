@@ -1,5 +1,6 @@
 ﻿var express = require('express');
 var path = require('path');
+var multiparty = require('multiparty');
 
 var HttpServer = function(imageManager){
 	var router = express();
@@ -60,6 +61,61 @@ var HttpServer = function(imageManager){
 
 			var p = path.join(path.resolve("."), 'cache', req.params.format, req.params.domain, req.params.year, req.params.event, req.params.image);
 			res.sendFile(p, '', function (err){ handleSendFileError(err, res, p); });
+		});
+
+		// Receive mail from Mailgun
+		router.post('/receive_mail', function(req, res) {
+			var eventname = req.query.eventname;
+
+			var form = new multiparty.Form();
+ 
+			
+			var metadata = {
+				author: '',
+				email: '',
+				subject: ''
+			};
+
+			form.on("field", function(name, value) {
+				if (name == 'From') {
+					var match = value.match(/(.+) <(.+@.+)>/);
+					if (!!match) {
+						metadata.author = match[1];
+						metadata.email = match[2];
+					}
+				}
+				if (name == 'Subject') {
+					metadata.title = value.replace(/(RE|FWD?):?/gi, "").trim();
+				}
+			});
+
+			form.on('part', function(part) {
+				part.on('error', function(err) {
+					console.log("Part error: ", err);
+				});
+
+				if (part.filename) {
+					console.log('File: ' + part.name);
+
+					var domain = "liveevents"
+					var year = new Date().getFullYear().toString();
+
+					imageManager.saveImage(domain, year, eventname, metadata, part);
+				} else {
+					part.resume();
+				}
+			});
+
+			form.on('error', function(err) {
+				console.log("Form error: ", err);
+				res.status(500).end();
+			})
+
+			form.on('close', function() {
+				res.status(200).end();
+			});
+
+			form.parse(req);
 		});
 
 		var handleSendFileError = function(err, res, p){
