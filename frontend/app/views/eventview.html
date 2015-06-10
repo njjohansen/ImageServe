@@ -20,8 +20,8 @@
 			<div class="main-text" ng-bind-html="description | rawHtml"></div>
             <h2>Alle billeder</h2>
             <div class="thumbsnails"> 
-            	<a class="fancybox" rel="group" href="{{imageUrlLarge}}/{{image}}" ng-repeat="image in images" image> <!-- directive-->
-            		<img ng-src="{{imageUrlThumb}}/{{image}}"/>
+            	<a class="fancybox" rel="group" href="{{imageUrlLarge}}/{{image.imageFile}}" ng-repeat="image in images" image> <!-- directive-->
+            		<img ng-src="{{imageUrlThumb}}/{{image.imageFile}}"/>
             	</a>
             </div>
         </div>

@@ -16,7 +16,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngPhotoSwipe'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -27,10 +28,14 @@ angular
       .when('/aarbog/2013/:eventName', { //:eventName*
         templateUrl: 'views/eventview.html'
       })*/
-      .when('/', {
+      .when('/afterdark/', {
         templateUrl: 'views/frontpage.html',
         controller: 'frontpageCtrl',     
       })  
+      .when('/', { 
+        templateUrl: 'views/liveeventalbum.html',
+        controller: 'liveEventAlbumController'
+      })
       .when('/aarbog/:year/', {
         templateUrl: 'views/aarbog.html',
         controller: 'aarbogCtrl'
@@ -38,6 +43,10 @@ angular
       .when('/aarbog/:year/:eventName', { //:eventName*
         templateUrl: 'views/aarbog.html',
         controller: 'aarbogCtrl'
+      })
+      .when('/live/', { //:eventName*
+        templateUrl: 'views/liveevent.html',
+        controller: 'liveEventController'
       })
       .otherwise({
         redirectTo: '/'

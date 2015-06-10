@@ -144,19 +144,44 @@ var ImageManager = function(){
 		});
 	};
 
+	// callback arg: {imageFile: <filename>, metadataFile: <filename>]
 	var getImages = function(orgPath, callback){
-		var list = [];
+		var images = {};
+
+		var addProp = function(fName, propName, value){
+			var fileId = fName.substring(0,fName.lastIndexOf('.')).toLowerCase();
+			if(typeof images[fileId] == 'undefined'){
+				images[fileId] = {};
+			}
+			images[fileId][propName] = value;
+		}
+
 		fs.readdir(orgPath, function(err, files){
 			if( err) throw err;
 			for(var i = 0; i < files.length; i++){
 				var fName = files[i];
 				var fPath = path.join(orgPath, fName);
 				var stat = fs.statSync(fPath);
-				if( isImage(fName, stat) )
-					list.push(fName);
+				if( isImage(fName, stat) ){
+					addProp(fName, "imageFile", fName);
+					addProp(fName, "imagePath", fPath);
+				}
+				else if( isJson(fName, stat) ){
+					addProp(fName, "metadataFile", fName);
+					addProp(fName, "metadataPath", fPath);
+				}
+			}
+
+			// convert obj to array and return
+			var list = [];
+			//console.log(JSON.stringify(images));
+			for( var k in images){
+				list.push(images[k]);
 			}
 			callback(list);
 		});
+
+
 	};
 
 	var getDirsSync = function(orgPath){
@@ -197,6 +222,13 @@ var ImageManager = function(){
 			(
 				filename.substr(-4).toLowerCase() === '.jpg' ||
 				filename.substr(-4).toLowerCase() === '.png'
+			) );		
+	};
+
+	var isJson = function(filename, stat){
+		return (stat.isFile() && 
+			(
+				filename.substr(-5).toLowerCase() === '.json'
 			) );		
 	};
 
@@ -255,6 +287,33 @@ var ImageManager = function(){
     	});
 	};
 
+	var readJsonFromFileSync = function (filepath) {
+		console.log("Reading METADATA: " + filepath);
+		if(fs.existsSync(filepath)){
+	    	data = fs.readFileSync(filepath, 'utf8');
+            if( typeof data !== 'undefined'){
+            	try{
+            		console.log("Read METADATA: " + data);
+            		var jsonData = JSON.parse(escapeSpecialChars(data));
+					console.log("Read METADATA2: " + JSON.stringify(jsonData));
+            		return jsonData;
+            	}
+            	catch(err){
+            		console.log("Err. loading: " + filepath);
+            		console.log("Invalid JSON: " + data);
+            		console.log("Error text: " + err);
+            	}
+            }
+            else{
+            	console.log("METADATA unavailable: " + filepath);
+            }
+    	}
+		else{
+	    	console.log("File not exist: '" + filepath + "'");
+	    }
+    	return null;
+	};
+
 	var enrichWithJson = function(item, callback){
 		var filepath = path.join(SRCPREFIX, item.domainId, item.yearId, item.eventId, 'metadata.txt');
 		readJsonFromFile(filepath, function(jsonMetadata){
@@ -288,6 +347,17 @@ var ImageManager = function(){
 			'yearId': yearId
 		};
 
+		// TODO: here we ougth to search images-list for metadataFile and read content
+		// of the file
+		for( var i = 0; i < images.length; i++){
+			var path = images[i].metadataPath;
+			if( path != null ){
+				images[i].metadata = readJsonFromFileSync(path);
+				console.log("Read METADATA3: " + JSON.stringify(images[i].metadata));
+			}
+		}
+		
+		// return
 		enrichWithJson(enriched, function(){
 			enriched.images = images;
 			callback(enriched);

@@ -1,0 +1,46 @@
+.photoswipe-gallery {
+  width: 100%;
+  float: left;
+}
+
+.photoswipe-gallery figure {
+  display: block;
+  float: left;
+  margin: 0 5px 5px 0;
+  width: 150px;
+}
+/*
+photoswipe-gallery img {
+  width: 100%;
+  height: auto;
+}
+*/
+/*
+.pswp img {
+	max-width: 100%;
+	height: 100% !important;
+	width: auto !important;
+}*/
+/*
+.photoswipe-gallery figure {
+  display: block;
+  float: left;
+  margin: 0 5px 5px 0;
+  width: 150px;
+}
+
+.pswp__zoom-wrap {
+	margin: 0 auto;
+}
+
+.pswp__zoom-wrap img + img {
+}
+
+.pswp__img {
+	display: block;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin: 0 auto;
+}
+*/

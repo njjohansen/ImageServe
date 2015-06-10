@@ -32,6 +32,13 @@ body{
     max-width: $container;
 }
 
+.photoalbum{
+    background-color: #000;
+    color: #AAA;
+    position: absolute;
+    margin-bottom: 0px;
+}
+
 header{
     width: 100%;
     height: $header-height;

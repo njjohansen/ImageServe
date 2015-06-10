@@ -1,0 +1,19 @@
+<!--Used to display pictures from an event with a given event name-->
+<header>
+    <div class="menu-container">
+        <a href="#/"><img src="images/nc-logo.png" class="nc-logo" alt="nc-logo"></a>        
+    </div>
+</header>
+<section>
+	<div class="main-section aarbog">
+		<h2 style="text-align:center;">PPM Fisketur 2015 live!</h2>
+        <div class="thumbsnails"> 
+        	<a class="fancybox" rel="group" href="{{imageUrlLarge}}/{{image}}" ng-repeat="image in images" image> <!-- directive-->
+        		<img ng-src="{{imageUrlThumb}}/{{image}}"/>
+        	</a>
+		</div>
+	</div>
+</section>
+<footer>
+    <p class="container">Netcompany - After Dark - Design af Bdr. Jensen, Netcompany UI team</p>
+</footer>    
