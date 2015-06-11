@@ -7,7 +7,7 @@ angular.module('NCEventsApp')
         var eventYear = '2015'; 
         var eventID = 'sommer';
         // end of event master data
-        
+        $scope.eventID = eventID;
   //        //fetch images from server
 
 		// $scope.imageUrlLarge = '';
@@ -15,7 +15,7 @@ angular.module('NCEventsApp')
 		// $scope.images = null;
         var makeCaption = function(image){
             if(typeof image.metadata !== 'undefined' && image.metadata !== null){
-                return image.metadata.title + ' | ' + image.metadata.author;
+                return '`' + image.metadata.title + '` af ' + image.metadata.author + '';
             }
             else{
                 return image.imageFile;
@@ -24,7 +24,7 @@ angular.module('NCEventsApp')
 
      	$rootScope.$on('imagesReady', function(event, data) { 
             console.log(data);
-            for (var i = 0; i < data.images.length; i++) {
+            for (var i = data.images.length-1; i >= 0 ; i--) {
                 var image = data.images[i];
                 $scope.images.push({ 
                     src: data.imageUrlLarge + '/' + image.imageFile,
