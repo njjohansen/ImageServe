@@ -28,7 +28,7 @@ angular
       .when('/aarbog/2013/:eventName', { //:eventName*
         templateUrl: 'views/eventview.html'
       })*/
-      .when('/afterdark/', {
+      .when('/afterdark', {
         templateUrl: 'views/frontpage.html',
         controller: 'frontpageCtrl',     
       })  

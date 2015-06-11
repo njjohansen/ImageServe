@@ -193,7 +193,8 @@ var ImageManager = function(){
 			var list = [];
 			//console.log(JSON.stringify(images));
 			for( var k in images){
-				list.push(images[k]);
+				if( typeof images[k].imageFile !== 'undefined')
+					list.push(images[k]);
 			}
 			callback(list);
 		});

@@ -1,8 +1,13 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "photoswipe/src/css/main.scss";
+@import "photoswipe/src/css/default-skin/default-skin.scss";
+@import "_angular-photoswipe.scss";
+
 @import "_variables.scss";
 @import "_afterdark.scss";
+
 
 .browsehappy {
     margin: 0.2em 0;
@@ -34,9 +39,9 @@ body{
 
 .photoalbum{
     background-color: #000;
+    width: 100%;    
+    height: 100%;
     color: #AAA;
-    position: absolute;
-    margin-bottom: 0px;
 }
 
 header{

@@ -4,7 +4,7 @@ angular.module('NCEventsApp')
 	.service('$$eventDataService', function($rootScope, $http) {
 		$rootScope.chosenDomain = 'aarbog'; //TODO: un-hardcode
 
-		var baseUrl = 'http://localhost:1337';
+		var baseUrl = 'http://event.netcompany.com/api';
 		this.getDomains = function() {
 			//get domains
 		    var promise = $http.get(baseUrl+'/').
