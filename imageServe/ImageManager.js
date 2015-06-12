@@ -440,6 +440,11 @@ var ImageManager = function(){
   			console.error("Probably not an image");
   			return;
   		}
+  		if (result.height*result.width < 100*100) {
+  			console.log("Image "+result.height+"x"+result.width+" is too small. Ignored");
+  			return;
+  		}
+
   		metadata["height"] = result.height;
   		metadata["width"] = result.width;
 
