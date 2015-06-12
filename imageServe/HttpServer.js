@@ -91,7 +91,7 @@ var HttpServer = function(imageManager){
 
 			form.on('part', function(part) {
 				part.on('error', function(err) {
-					console.log("Part error: ", err);
+					console.error("Part error: ", err);
 				});
 
 				if (part.filename) {
@@ -107,7 +107,7 @@ var HttpServer = function(imageManager){
 			});
 
 			form.on('error', function(err) {
-				console.log("Form error: ", err);
+				console.error("Form error: ", err);
 				res.status(500).end();
 			})
 

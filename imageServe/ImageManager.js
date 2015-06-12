@@ -435,7 +435,7 @@ var ImageManager = function(){
 		fs.mkdirParent(imagepath, function() {
 			fs.writeFile(metadataFile, JSON.stringify(metadata), function(err) {
 				if (err) {
-					return console.log(err);
+					return console.error(err);
 				}
 
 				stream.pipe(fs.createWriteStream(imageFile));
