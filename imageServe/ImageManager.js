@@ -2,6 +2,8 @@
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
+var pass = require('stream').PassThrough;
+var imagesize = require('imagesize');
 
 var ImageManager = function(){
 	var THUMBPREFIX = "thumb";
@@ -427,18 +429,33 @@ var ImageManager = function(){
 		var date = new Date();
 		metadata['time'] = date.toISOString();
 
-		var imagepath = path.join(__dirname, SRCPREFIX, domainId, yearId, eventId);
+		var a = new pass;
+		var b = new pass;
 
-		var metadataFile = path.join(imagepath, date.toISOString().replace(/:/g, '-')+'.json');
-		var imageFile = path.join(imagepath, date.toISOString().replace(/:/g, '-')+path.extname(stream.filename));
+		stream.pipe(a);
+		stream.pipe(b);
 
-		fs.mkdirParent(imagepath, function() {
-			fs.writeFile(metadataFile, JSON.stringify(metadata), function(err) {
-				if (err) {
-					return console.error(err);
-				}
+		imagesize(a, function (err, result) {
+  		if (err) {
+  			console.error("Probably not an image");
+  			return;
+  		}
+  		metadata["height"] = result.height;
+  		metadata["width"] = result.width;
 
-				stream.pipe(fs.createWriteStream(imageFile));
+			var imagepath = path.join(__dirname, SRCPREFIX, domainId, yearId, eventId);
+
+			var metadataFile = path.join(imagepath, date.toISOString().replace(/:/g, '-')+'.json');
+			var imageFile = path.join(imagepath, date.toISOString().replace(/:/g, '-')+path.extname(stream.filename));
+
+			fs.mkdirParent(imagepath, function() {
+				fs.writeFile(metadataFile, JSON.stringify(metadata), function(err) {
+					if (err) {
+						return console.error(err);
+					}
+
+					b.pipe(fs.createWriteStream(imageFile));
+				});
 			});
 		});
 	};
