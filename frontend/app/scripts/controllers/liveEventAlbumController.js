@@ -31,7 +31,7 @@ angular.module('NCEventsApp')
                     safeSrc: data.imageUrlLarge + '/' + image.imageFile,
                     thumb: data.imageUrlThumb + '/' + image.imageFile,
                     caption: makeCaption(image),
-                    size: screenSize(1024, 679),
+                    size: screenSize(image.metadata),
                     type: 'image'
                 });
             }
@@ -41,9 +41,16 @@ angular.module('NCEventsApp')
   //   	 	$scope.images = data.images; 
      	 });
 
-        var screenSize = function (width, height) {
-            var x = width ? width : $window.innerWidth;
-            var y = height ? height : $window.innerHeight;
+        var screenSize = function (imageMetadata) {
+            var x = $window.innerWidth;
+            var y = $window.innerHeight;
+
+            if( typeof imageMetadata != 'undefined'){
+                if (imageMetadata.width != null && imageMetadata.height != null) {
+                    x = imageMetadata.width;
+                    y = imageMetadata.height;
+                }
+            }
             
             return x + 'x' + y;
         }; 

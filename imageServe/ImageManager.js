@@ -241,6 +241,7 @@ var ImageManager = function(){
 		return (stat.isFile() && 
 			(
 				filename.substr(-4).toLowerCase() === '.jpg' ||
+				filename.substr(-5).toLowerCase() === '.jpeg' ||
 				filename.substr(-4).toLowerCase() === '.png'
 			) );
 	};

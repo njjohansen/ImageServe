@@ -40,10 +40,26 @@ div.image-thumbs {
 	a img {
 		display: block;
 		margin: auto;
-	}
+	} 	
 
 	figure figcaption {
     	border: 1px dotted blue;
     	text-align: center;
+	}
+}
+
+div.image-thumbs figure figcaption{
+	border: none;
+}
+
+.photoalbum{
+	color: #EAEAEA !important;
+	h1{
+		text-align: center;
+		margin-top: 0;
+		padding-top: 20px;
+	}
+	.desc{
+		padding: 0 15px 30px 15px;
 	}
 }
