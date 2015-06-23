@@ -5,7 +5,7 @@ angular.module('NCEventsApp')
         // here you setup event master data
         var chosenDomain = 'liveevents';
         var eventYear = '2015'; 
-        var eventID = 'sommer';
+        var eventID = 'fangst';
         // end of event master data
         $scope.eventID = eventID;
   //        //fetch images from server
@@ -46,9 +46,10 @@ angular.module('NCEventsApp')
             var y = $window.innerHeight;
 
             if( typeof imageMetadata != 'undefined'){
-                if (imageMetadata.width != null && imageMetadata.height != null) {
-                    x = imageMetadata.width;
-                    y = imageMetadata.height;
+                if (imageMetadata.scaledWidth != null && imageMetadata.scaledHeight != null) {
+                    x = imageMetadata.scaledWidth;
+                    y = imageMetadata.scaledHeight;
+                    console.log("Detected: " + x + "," + y);
                 }
             }
             

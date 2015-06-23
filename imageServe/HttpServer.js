@@ -65,7 +65,7 @@ var HttpServer = function(imageManager){
 
 		// Receive mail from Mailgun
 		router.post('/receive_mail', function(req, res) {
-			var eventname = req.query.eventname;
+			var eventname = req.query.eventname.toLowerCase();
 
 			var form = new multiparty.Form();
  
@@ -85,7 +85,7 @@ var HttpServer = function(imageManager){
 					}
 				}
 				if (name == 'Subject') {
-					metadata.title = value.replace(/(RE|FWD?):?/gi, "").trim();
+					metadata.title = value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "").trim();
 				}
 			});
 

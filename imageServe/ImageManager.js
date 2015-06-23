@@ -97,8 +97,32 @@ var ImageManager = function(){
 				gm(srcPath)
 				.resize(1024,1024)
 				.autoOrient()
-				.write(cachePathLarge, function(err){if(err){console.log("" + err);}});	
+				.write(cachePathLarge, function(err){
+					if(err){console.log("" + err);}
 
+					updateMetadataFile(srcPath, cachePathLarge);
+				});	
+			}
+		});
+	};
+
+	var updateMetadataFile = function(srcImgPath, dstImgPath){
+		var metadataPath = srcImgPath.replace(/\.[^/.]+$/,".json");
+		readJsonFromFile(metadataPath, function(metadata){
+			if(metadata != null){
+				gm(dstImgPath).size(function(err,size){
+					if (err) {
+						return console.error(err);
+					}
+					console.log("Writing scaled image size to metadata: " + size.width + "x" + size.height);
+					metadata.scaledWidth = size.width;
+					metadata.scaledHeight = size.height;
+					fs.writeFile(metadataPath, JSON.stringify(metadata), function(err) {
+						if (err) {
+							return console.error(err);
+						}
+					});
+				});
 			}
 		});
 	};
