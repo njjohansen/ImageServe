@@ -85,7 +85,7 @@ var HttpServer = function(imageManager){
 					}
 				}
 				if (name == 'Subject') {
-					metadata.title = value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "").trim();
+					metadata.title = value.trim();
 				}
 			});
 

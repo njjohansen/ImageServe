@@ -28,11 +28,11 @@ angular
       .when('/aarbog/2013/:eventName', { //:eventName*
         templateUrl: 'views/eventview.html'
       })*/
-      .when('/afterdark', {
+      .when('/', {
         templateUrl: 'views/frontpage.html',
         controller: 'frontpageCtrl',     
       })  
-      .when('/', { 
+      .when('/liveevent', { 
         templateUrl: 'views/liveeventalbum.html',
         controller: 'liveEventAlbumController'
       })
